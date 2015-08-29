@@ -1,25 +1,37 @@
-class tankClass{
 
- 
 
-}
-PImage tank;
-tank=loadImage("tank.png");
+
+     Tank player1=new Tank(0,375,270, "tank.png");
+
+
+
+
 void setup()
 {
+  size(1024,768);
+   PImage map;
   
-     
-  tankClass player=new tankClass();
+    map=loadImage("background.png");
+    
+  
+  background(map);
+  
+
+
   
 }
 void draw()
-
 {
-  image(tank,0,0);
-  
+image(player1.sprite,player1.xpos, player1.ypos);
+ pushMatrix();
+ translate(player1.xpos, player1.ypos);
+ rotate(radians(player1.angle));
+  translate(0,0);
+  popMatrix();
   
 }
-void keyPressed()
+
+/*void keyPressed()
 {
   if (value == 0) {
     value = 255;
@@ -27,3 +39,4 @@ void keyPressed()
     value = 0;
   }
 }
+*/
