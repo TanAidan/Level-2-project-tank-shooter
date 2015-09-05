@@ -1,15 +1,16 @@
 
 
 
-     Tank player1=new Tank(0,375,270, "tank.png");
+     Tank player1;
 
-
+PImage map;
 
 
 void setup()
 {
+  player1=new Tank(30,419, 90,loadImage("tank.png") );
   size(1024,768);
-   PImage map;
+   
   
     map=loadImage("background.png");
     
@@ -22,21 +23,40 @@ void setup()
 }
 void draw()
 {
-image(player1.sprite,player1.xpos, player1.ypos);
- pushMatrix();
+
+  if(keyPressed== true) {
+    if(key == 'd') {
+     player1.moveRight();
+      
+  }
+   if(key == 'a') {
+     player1.moveLeft();
+      
+  }
+   if(key == 'w') {
+     player1.moveUp();
+      
+  }
+   if(key == 's') {
+     player1.moveDown();
+      
+  }
+  if(keyCode ==RIGHT){
+     player1.rotateLeft();
+  }
+  if(keyCode ==LEFT){
+    player1.rotateRight();
+  }
+  }
+    background(map);
+  pushMatrix();
  translate(player1.xpos, player1.ypos);
  rotate(radians(player1.angle));
-  translate(0,0);
+ image(player1.sprite, -42.5, -40.5);
+ 
   popMatrix();
-  
+
+
 }
 
-/*void keyPressed()
-{
-  if (value == 0) {
-    value = 255;
-  } else {
-    value = 0;
-  }
-}
-*/
+
