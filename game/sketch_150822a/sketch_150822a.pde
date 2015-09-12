@@ -5,9 +5,10 @@
 
 PImage map;
 
-
+ //Laser[] laserArray = new Laser[0];
 void setup()
 {
+
   player1=new Tank(30,419, 90,loadImage("tank.png") );
   size(1024,768);
    
@@ -23,6 +24,12 @@ void setup()
 }
 void draw()
 {
+ 
+   //if(key==' ')
+  // {
+   //  append(laserArray, new Laser(player1.xpos,player1.ypos,player1.angle,loadImage("good laser shot.png")));
+     
+  // }
 
   if(keyPressed== true) {
     if(key == 'd') {
@@ -55,8 +62,12 @@ void draw()
  image(player1.sprite, -42.5, -40.5);
  
   popMatrix();
-
+/*for(laser ls: LaserArray)
+{
+  ls.update();
+}*/
 
 }
+
 
 
