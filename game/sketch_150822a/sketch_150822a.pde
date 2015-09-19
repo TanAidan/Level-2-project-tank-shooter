@@ -34,7 +34,7 @@ void draw()
   if(keyPressed== true) {
     if(key == 'd') {
      player1.moveRight();
-      
+    
   }
    if(key == 'a') {
      player1.moveLeft();
@@ -62,6 +62,12 @@ void draw()
  image(player1.sprite, -42.5, -40.5);
  
   popMatrix();
+   
+  
+   
+
+    
+     
 /*for(laser ls: LaserArray)
 {
   ls.update();
