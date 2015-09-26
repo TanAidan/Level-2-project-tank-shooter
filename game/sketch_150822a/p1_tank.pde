@@ -6,7 +6,7 @@
   float angle;
   int xpos;
   int ypos;
-  boolean stuck=true;
+ 
  
   
   
@@ -20,13 +20,15 @@
    this.angle=angle;
     this.sprite = sprite;
   }
-  
+ 
 public void moveUp()
 { 
-   color topPixel = get(xpos,ypos-35);
+ 
+ 
+   color topPixel = get(xpos, ypos-(35-(int) degrees));
  println(topPixel);
 
- if(topPixel>=-1)
+ if(topPixel!=-16777216)
 {
   this.ypos=this.ypos-movementSpeed;
 }
@@ -34,8 +36,8 @@ public void moveUp()
 }
 public void moveDown()
 {
-  color downPixel = get(xpos,ypos+34);
-  if(downPixel==(-1))
+  color downPixel = get(xpos,ypos+40);
+  if(downPixel!=-16777216)
 {
   this.ypos=this.ypos+movementSpeed;
 }
@@ -44,8 +46,8 @@ public void moveDown()
 
 public void moveRight()
 {
-  color rightPixel = get(xpos+37,ypos);
-  if(rightPixel==(-1))
+  color rightPixel = get(xpos+40,ypos);
+  if(rightPixel!=-16777216)
 {
   this.xpos=this.xpos+movementSpeed;
 }
@@ -54,8 +56,8 @@ public void moveRight()
 }
 public void moveLeft()
 {
-  color leftPixel = get(xpos-37,ypos);
-  if(leftPixel==(-1))
+  color leftPixel = get(xpos-40,ypos);
+  if(leftPixel!=-16777216)
 {
   this.xpos=this.xpos-movementSpeed;
 }
@@ -76,14 +78,15 @@ public void rotateRight()
   
 }
 
-public void shoot()
-{
+public void calculate(){
+  returnAngle();
+  degrees=abs(1.5707964-degrees)*20;
   
-  
+  if(degrees>15)
+  {
+    degrees==15;
+  }
 }
-  
-}
-
   
 
 

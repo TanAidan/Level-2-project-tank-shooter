@@ -1,4 +1,4 @@
-/*class Laser
+class Laser
 {
   int laserxpos;
   int laserypos;
@@ -21,5 +21,4 @@
 }
 
 
-*/
 
