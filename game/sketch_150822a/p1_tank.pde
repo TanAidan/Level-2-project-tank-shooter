@@ -6,8 +6,9 @@
   float angle;
   int xpos;
   int ypos;
- 
- 
+
+
+
   
   
   
@@ -24,8 +25,8 @@
 public void moveUp()
 { 
  
- 
-   color topPixel = get(xpos, ypos-(35-(int) degrees));
+
+   color topPixel = get(xpos, ypos-(35-num));
  println(topPixel);
 
  if(topPixel!=-16777216)
@@ -36,7 +37,7 @@ public void moveUp()
 }
 public void moveDown()
 {
-  color downPixel = get(xpos,ypos+40);
+  color downPixel = get(xpos,ypos+(35-num));
   if(downPixel!=-16777216)
 {
   this.ypos=this.ypos+movementSpeed;
@@ -46,7 +47,7 @@ public void moveDown()
 
 public void moveRight()
 {
-  color rightPixel = get(xpos+40,ypos);
+  color rightPixel = get(xpos+(40+num1),ypos);
   if(rightPixel!=-16777216)
 {
   this.xpos=this.xpos+movementSpeed;
@@ -56,7 +57,7 @@ public void moveRight()
 }
 public void moveLeft()
 {
-  color leftPixel = get(xpos-40,ypos);
+  color leftPixel = get(xpos-40-num1,ypos);
   if(leftPixel!=-16777216)
 {
   this.xpos=this.xpos-movementSpeed;
@@ -77,17 +78,6 @@ public void rotateRight()
      this.angle=this.angle-rotationSpeed;
   
 }
-
-public void calculate(){
-  returnAngle();
-  degrees=abs(1.5707964-degrees)*20;
-  
-  if(degrees>15)
-  {
-    degrees==15;
-  }
 }
-  
-
 
 
