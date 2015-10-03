@@ -1,7 +1,6 @@
 
 float degrees;
-int num=0;
-int num1=0;
+
 Tank player1;
 
 PImage map;
@@ -43,30 +42,13 @@ void draw()
     }
     if (keyCode ==RIGHT) {
       
-    player1.rotateLeft();
+    player1.rotateRight();
         
-      num=num-1;
-      if(num<0){
-        num=0;
-      }
-      num1=num1-1;
-      if(num1<0){
-        num1=0;
-      }
       
     }
     if (keyCode ==LEFT) {
-      player1.rotateRight();
+      player1.rotateLeft();
       
-      
-       num=num+1;
-      if(num>15){
-        num=15;
-      }
-       num1=num1+1;
-      if(num1>10){
-        num1=10;
-      }
     }
   }
   background(map);
@@ -80,12 +62,8 @@ void draw()
   popMatrix();
 
 
-  fill(255, 0, 0);
-  ellipse(player1.xpos, player1.ypos-50 , 5, 5);
-fill(255, 0, 0);
-  ellipse(player1.xpos-50, player1.ypos , 5, 5);
-
-  print(num);
+ 
+  //print(upBound);
 
   /*for(laser ls: LaserArray)
    {

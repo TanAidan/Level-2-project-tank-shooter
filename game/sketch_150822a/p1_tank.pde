@@ -6,10 +6,10 @@
   float angle;
   int xpos;
   int ypos;
+float vertBound=0;
 
+float hortBound=0;
 
-
-  
   
   
 
@@ -24,9 +24,8 @@
  
 public void moveUp()
 { 
- 
-
-   color topPixel = get(xpos, ypos-(35-num));
+adjustAngle();
+   color topPixel = get(xpos, ypos-int(35-vertBound));
  println(topPixel);
 
  if(topPixel!=-16777216)
@@ -37,7 +36,8 @@ public void moveUp()
 }
 public void moveDown()
 {
-  color downPixel = get(xpos,ypos+(35-num));
+  adjustAngle();
+  color downPixel = get(xpos,ypos+int(35-vertBound));
   if(downPixel!=-16777216)
 {
   this.ypos=this.ypos+movementSpeed;
@@ -47,7 +47,8 @@ public void moveDown()
 
 public void moveRight()
 {
-  color rightPixel = get(xpos+(40+num1),ypos);
+  adjustAngle();
+  color rightPixel = get(xpos+int(40+hortBound),ypos);
   if(rightPixel!=-16777216)
 {
   this.xpos=this.xpos+movementSpeed;
@@ -57,7 +58,8 @@ public void moveRight()
 }
 public void moveLeft()
 {
-  color leftPixel = get(xpos-40-num1,ypos);
+  adjustAngle();
+  color leftPixel = get(xpos-int(40-hortBound),ypos);
   if(leftPixel!=-16777216)
 {
   this.xpos=this.xpos-movementSpeed;
@@ -67,17 +69,67 @@ public void moveLeft()
 }
 public void rotateLeft()
 {
-   this.angle=this.angle+rotationSpeed;
+   this.angle=this.angle-rotationSpeed;
   
-  
+   
+println(angle);
   
 }
 public void rotateRight()
 {
-  
-     this.angle=this.angle-rotationSpeed;
+
+     this.angle=this.angle+rotationSpeed;
+     
+println(angle);
+}
+public void adjustAngle()
+{
+  if(angle>=360){
+    angle=angle-360;
+  }
+  if(angle<0){
+    angle=angle+360;
+    
+  }
+  if(angle>=0&&angle<45)
+  {
+  vertBound=angle/3;
+ hortBound=angle/3;
+
+  }
+  else if(angle>45&&angle<90)
+  {
+    vertBound=(wangle-45)/3;
+ hortBound=(angle-45)/3;
+  }
+  else if(angle>90&&angle<135){
+ vertBound=(angle-90)/3;
+ hortBound=(angle-90)/3;  
+  }
+  else if(angle>135&&angle<180){
+   vertBound=(angle-135)/3;
+ hortBound=(angle-135)/3;
+  }
+  else if (angle>180&&angle<225){
+    vertBound=(angle-135)/3;
+ hortBound=(angle-135)/3;
+  }
+  else if (angle>225&&angle<270){
+    vertBound=(angle-135)/3;
+ hortBound=(angle-135)/3;
+  }
+  else if (angle>270&&angle<315){
+    vertBound=(angle-270)/3;
+ hortBound=(angle-270)/3;
+  }
+  else if (angle>315&&angle<360){
+    vertBound=(angle-3151)/3;
+ hortBound=(angle-315)/3;
+  }
   
 }
+ 
 }
+
 
 
