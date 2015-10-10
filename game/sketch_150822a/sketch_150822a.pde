@@ -1,14 +1,15 @@
-
+ boolean canShoot=true;
 float degrees;
 
 Tank player1;
 
 PImage map;
 
-//Laser[] laserArray = new Laser[0];
+
+ArrayList<Laser> laserArray = new ArrayList<Laser>();
 void setup()
 {
-
+  frameRate(1000);
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1024, 768);
 
@@ -21,13 +22,17 @@ void setup()
 void draw()
 {
 
-  //if(key==' ')
-  // {
-  //  append(laserArray, new Laser(player1.xpos,player1.ypos,player1.angle,loadImage("good laser shot.png")));
-
-  // }
-
+  
+   
+  background(map);
+  
   if (keyPressed== true) {
+    if(key==' ')
+   {
+    canShoot=false;
+    laserArray.add(new Laser(player1.xpos+50,player1.ypos+50,player1.angle,loadImage("good laser shot.png"))); 
+     println(laserArray.size());
+   }
     if (key == 'd') {
       player1.moveRight();
     }
@@ -51,7 +56,7 @@ void draw()
       
     }
   }
-  background(map);
+  
    degrees = radians(player1.angle);
   
   pushMatrix();
@@ -65,18 +70,9 @@ void draw()
  
   //print(upBound);
 
-  /*for(laser ls: LaserArray)
+  for(Laser ls : laserArray)
    {
    ls.update();
-   }*/
+   }
 }
-/*public int num()
-  {
-  return num;
-  
-  }
-  public int num1()
-  {
-   return num1; 
-  }
-  */
+

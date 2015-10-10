@@ -1,9 +1,10 @@
-/*class Laser
+class Laser
 {
   int laserxpos;
   int laserypos;
   float angle;
   PImage laserSprite;
+ 
    public Laser(int laserxpos,int laserypos,float angle,PImage laserSprite)
   {
     this.laserxpos=laserxpos;
@@ -18,7 +19,8 @@
     image(laserSprite,laserxpos, laserypos);
   
 }
+
 }
 
-*/
+
 
