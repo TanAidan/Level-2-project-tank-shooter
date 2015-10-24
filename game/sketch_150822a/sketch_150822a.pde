@@ -32,12 +32,12 @@ void draw()
     if (key==' ')
     {
       canShoot=false;
-      laserArray.add(new Laser(xpos2, ypos2, player1.angle, loadImage("lazer.png"))); 
-      println(laserArray.size());
-    }if (keys[0]) {
+      laserArray.add(new Laser(player1.xpos,player1.ypos, player1.angle, loadImage("lazer.png")));
+    }
+    if (keys[0]) {
       player1.moveUp();
     }
-     if (keys[1]) {
+    if (keys[1]) {
       player1.moveLeft();
     }
     if (keys[2]) {
@@ -54,33 +54,27 @@ void draw()
       player1.rotateLeft();
     }
   }
-
-  degrees = radians(player1.angle);
-
-  pushMatrix();
-  translate(player1.xpos, player1.ypos);
-  for (Laser ls : laserArray)
+for (Laser ls : laserArray)
   {
     ls.update();
   }
-  rotate(degrees);
-    
-  image(player1.sprite, -42.5, -40.5);
-
-
-  popMatrix();
+  player1.draw();
+  
 }
-//print(upBound);
 
 void keyPressed() {
-  if (key == 'w') 
+  if (key == 'w') {
     keys[0] = true;
-  if (key == 'a') 
+  }
+  if (key == 'a') {
     keys[1] = true;
-  if (key == 's') 
+  }
+  if (key == 's') {
     keys[2] = true;
-  if (key == 'd') 
+  }
+  if (key == 'd') {
     keys[3] = true;
+  }
 }
 
 void keyReleased() {

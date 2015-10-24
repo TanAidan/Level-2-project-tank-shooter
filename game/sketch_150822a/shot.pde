@@ -1,26 +1,31 @@
 class Laser
 {
-  int laserxpos;
-  int laserypos;
+  float laserxpos;
+  float laserypos;
   float angle;
   PImage laserSprite;
- 
-   public Laser(int laserxpos,int laserypos,float angle,PImage laserSprite)
+  float laserSpeed;
+
+  public Laser(float laserxpos, float laserypos, float angle, PImage laserSprite)
   {
     this.laserxpos=laserxpos;
     this.laserypos=laserypos;
-   this.angle=angle;
+    this.angle=angle;
     this.laserSprite = laserSprite;
+    this.laserSpeed = 5;
   }
-  
+
+
+  public void draw() {
+    image(laserSprite, laserxpos, laserypos);
+    print(laserxpos);
+    print(laserypos);
+  }
+
   public void update()
-{
-  
-    image(laserSprite,laserxpos, laserypos);
-  
+  {
+    laserxpos += laserSpeed * cos(radians(angle-90));
+    laserypos += laserSpeed * sin(radians(angle-90));
+    draw();
+  }
 }
-
-}
-
-
-
