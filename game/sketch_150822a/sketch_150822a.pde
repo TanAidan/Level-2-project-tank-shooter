@@ -4,7 +4,7 @@ boolean[] keys = new boolean[6];
 int xpos2=35;
 int ypos2=-3;
 Tank player1;
-
+unicorn unicorn1;
 PImage map;
 
 
@@ -14,9 +14,9 @@ void setup()
 
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1024, 768);
+unicorn1=new unicorn(920, 585, loadImage("images.png"));
 
-
-  map=loadImage("background.png");
+  map=loadImage("background.png");  
 
 
   background(map);
@@ -29,10 +29,10 @@ void draw()
   background(map);
 
   if (keyPressed== true) {
-    if (key==' ')
+    if (keys[4])  
     {
       canShoot=false;
-      laserArray.add(new Laser(player1.xpos,player1.ypos, player1.angle, loadImage("lazer.png")));
+      laserArray.add(new Laser(player1.xpos,player1.ypos-5, player1.angle, loadImage("lazer.png")));
     }
     if (keys[0]) {
       player1.moveUp();
@@ -42,7 +42,7 @@ void draw()
     }
     if (keys[2]) {
       player1.moveDown();
-    }
+    }   
     if (keys[3]) {
       player1.moveRight();
     }
@@ -59,7 +59,7 @@ for (Laser ls : laserArray)
     ls.update();
   }
   player1.draw();
-  
+      image(unicorn1.sprite, unicorn1.xpos,unicorn1.ypos);
 }
 
 void keyPressed() {
@@ -75,6 +75,9 @@ void keyPressed() {
   if (key == 'd') {
     keys[3] = true;
   }
+  if(key==' '){
+    keys[4]=true;
+  }
 }
 
 void keyReleased() {
@@ -86,4 +89,9 @@ void keyReleased() {
     keys[2] = false;
   if (key == 'd') 
     keys[3] = false;
+    if(key==' '){
+    keys[4]=false;
+  }
+  println(player1.xpos);
+  println(player1.ypos);
 }
