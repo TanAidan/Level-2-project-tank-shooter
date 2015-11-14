@@ -13,7 +13,7 @@ void setup()
 {
 
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
-  size(1024, 768);
+  size(1025, 769);
 unicorn1=new unicorn(920, 585, loadImage("images.png"));
 
   map=loadImage("background.png");  
@@ -25,7 +25,8 @@ void draw()
 {
 
 
-
+println(mouseX);
+println(mouseY);
   background(map);
 
   if (keyPressed== true) {
@@ -59,7 +60,8 @@ for (Laser ls : laserArray)
     ls.update();
   }
   player1.draw();
-      image(unicorn1.sprite, unicorn1.xpos,unicorn1.ypos);
+      
+      unicorn1.unimissle();
 }
 
 void keyPressed() {
@@ -95,3 +97,4 @@ void keyReleased() {
   println(player1.xpos);
   println(player1.ypos);
 }
+
