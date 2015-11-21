@@ -12,7 +12,7 @@ class Laser
     this.laserypos=laserypos;
     this.angle=angle;
     this.laserSprite = laserSprite;
-    this.laserSpeed = 5;
+    this.laserSpeed = 10;
   }
 
 

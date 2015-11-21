@@ -2,15 +2,15 @@ class uniLaser
 {
   float unilaserxpos;
   float unilaserypos;
- float uniangle;
+float uniangle;
   PImage uniSprite;
   float unilaserSpeed;
 
-  public uniLaser(float unilaserxpos, float  unilaserypos, float uniangle, PImage uniSprite)
+  public uniLaser(float unilaserxpos, float  unilaserypos,  PImage uniSprite)
   {
     this.unilaserxpos=unilaserxpos;
     this.unilaserypos=unilaserypos;
-    this.uniangle=uniangle;
+   
     this.uniSprite = uniSprite;
     this.unilaserSpeed = 5;
   }

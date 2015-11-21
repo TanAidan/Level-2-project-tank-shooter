@@ -6,12 +6,14 @@ int ypos2=-3;
 Tank player1;
 unicorn unicorn1;
 PImage map;
-
+uniLaser unibullet;
+/*ArrayList<uniLaser> uniArray = new ArrayList<uniLaser>();*/
 
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
 void setup()
 {
-
+  
+/*LaserArray.add(new uniLaser(956,641,loadImage("images-1.jpeg") ));*/
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
 unicorn1=new unicorn(920, 585, loadImage("images.png"));
@@ -24,7 +26,7 @@ unicorn1=new unicorn(920, 585, loadImage("images.png"));
 void draw()
 {
 
-
+int m =0;
 println(mouseX);
 println(mouseY);
   background(map);
@@ -62,7 +64,19 @@ for (Laser ls : laserArray)
   player1.draw();
       
       unicorn1.unimissle();
-}
+      /*
+for (uniLaser ms : uniArray)
+  {
+    ms.update();
+  
+    if(millis() - m >= 1000){
+      m += 1000;
+      unibullet.update();
+    }
+  }
+  */
+      }
+
 
 void keyPressed() {
   if (key == 'w') {

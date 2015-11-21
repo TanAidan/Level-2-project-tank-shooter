@@ -2,7 +2,7 @@
 class Tank
 {
   float rotationSpeed=2.5;
-  int movementSpeed=2;
+  int movementSpeed=3;
   float angle;
   int xpos;
   int ypos;
