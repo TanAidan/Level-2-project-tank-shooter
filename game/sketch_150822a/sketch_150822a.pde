@@ -6,18 +6,20 @@ int ypos2=-3;
 Tank player1;
 unicorn unicorn1;
 PImage map;
-uniLaser unibullet;
-/*ArrayList<uniLaser> uniArray = new ArrayList<uniLaser>();*/
 
+
+
+ArrayList<uniLaser> uniArray = new ArrayList<uniLaser>();
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
+int m =0;
 void setup()
 {
-  
-/*LaserArray.add(new uniLaser(956,641,loadImage("images-1.jpeg") ));*/
+
+
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
-unicorn1=new unicorn(920, 585, loadImage("images.png"));
-
+  unicorn1=new unicorn(920, 585, loadImage("images.png"));
+  //uniLaser unibullet= new uniLaser(float unilaserxpos, float  unilaserypos,  PImage uniSprite);
   map=loadImage("background.png");  
 
 
@@ -25,17 +27,23 @@ unicorn1=new unicorn(920, 585, loadImage("images.png"));
 }
 void draw()
 {
+  println(mouseX);
+  println(mouseY);
 
-int m =0;
-println(mouseX);
-println(mouseY);
+  println(mouseX);
+  println(mouseY);
   background(map);
+  if (millis() - m >= 1000) {
+    m += 2000;
 
+
+    uniArray.add(new uniLaser(923, 607, loadImage("line-border-clip-art-vector-clip-art-of-a-border-of-rainbow-lines-on-white-by-prawny-412.jpg")));
+  }
   if (keyPressed== true) {
     if (keys[4])  
     {
       canShoot=false;
-      laserArray.add(new Laser(player1.xpos,player1.ypos-5, player1.angle, loadImage("lazer.png")));
+      laserArray.add(new Laser(player1.xpos, player1.ypos-5, player1.angle, loadImage("lazer.png")));
     }
     if (keys[0]) {
       player1.moveUp();
@@ -57,25 +65,19 @@ println(mouseY);
       player1.rotateLeft();
     }
   }
-for (Laser ls : laserArray)
+  for (Laser ls : laserArray)
   {
     ls.update();
   }
   player1.draw();
-      
-      unicorn1.unimissle();
-      /*
-for (uniLaser ms : uniArray)
+
+  unicorn1.unimissle();
+
+  for (uniLaser  ms : uniArray)
   {
     ms.update();
-  
-    if(millis() - m >= 1000){
-      m += 1000;
-      unibullet.update();
-    }
   }
-  */
-      }
+}
 
 
 void keyPressed() {
@@ -91,7 +93,7 @@ void keyPressed() {
   if (key == 'd') {
     keys[3] = true;
   }
-  if(key==' '){
+  if (key==' ') {
     keys[4]=true;
   }
 }
@@ -105,10 +107,9 @@ void keyReleased() {
     keys[2] = false;
   if (key == 'd') 
     keys[3] = false;
-    if(key==' '){
+  if (key==' ') {
     keys[4]=false;
   }
-  println(player1.xpos);
-  println(player1.ypos);
+
 }
 
