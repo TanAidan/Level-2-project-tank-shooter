@@ -26,10 +26,10 @@ class Laser
     laserxpos += laserSpeed * cos(radians(angle-90));
     laserypos += laserSpeed * sin(radians(angle-90));
     color downPixel = get(int(laserxpos), int(laserypos));
-    if (downPixel==-16777216)
+    if (downPixel==COLOR_BLACK)
     {
-      print("stop"); 
-      laserxpos=laserypos+100000;
+ 
+      laserypos=laserypos+100000;
       
     }
     

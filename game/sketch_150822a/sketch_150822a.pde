@@ -1,3 +1,4 @@
+int COLOR_BLACK = -16777216;
 boolean canShoot=true;
 float degrees;
 boolean[] keys = new boolean[6];
@@ -9,7 +10,7 @@ PImage map;
 
 
 
-ArrayList<uniLaser> uniArray = new ArrayList<uniLaser>();
+ArrayList<UniLaser> uniArray = new ArrayList<UniLaser>();
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
 int m =0;
 void setup()
@@ -19,7 +20,7 @@ void setup()
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
-  //uniLaser unibullet= new uniLaser(float unilaserxpos, float  unilaserypos,  PImage uniSprite);
+  //UniLaser unibullet= new UniLaser(float unilaserxpos, float  unilaserypos,  PImage uniSprite);
   map=loadImage("background.png");  
 
 
@@ -27,17 +28,13 @@ void setup()
 }
 void draw()
 {
-  println(mouseX);
-  println(mouseY);
 
-  println(mouseX);
-  println(mouseY);
   background(map);
   if (millis() - m >= 1000) {
     m += 2000;
 
 
-    uniArray.add(new uniLaser(923, 607, loadImage("line-border-clip-art-vector-clip-art-of-a-border-of-rainbow-lines-on-white-by-prawny-412.jpg")));
+    uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
     if (keys[4])  
@@ -73,9 +70,19 @@ void draw()
 
   unicorn1.unimissle();
 
-  for (uniLaser  ms : uniArray)
+  for (int i = uniArray.size () - 1; i >= 0; i--)
   {
+
+
+    UniLaser ms=uniArray.get(i);
     ms.update();
+    loadPixels();
+    color downPixel= pixels[ms.unilaserxpos+(ms.unilaserypos*1025)];
+    println(downPixel);
+    if (downPixel==COLOR_BLACK)
+    {
+      uniArray.remove(i);
+    }
   }
 }
 
@@ -110,6 +117,5 @@ void keyReleased() {
   if (key==' ') {
     keys[4]=false;
   }
-
 }
 

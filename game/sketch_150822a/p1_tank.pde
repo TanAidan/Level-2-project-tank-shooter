@@ -40,7 +40,7 @@ class Tank
   {
     adjustAngle();
     color downPixel = get(xpos, ypos+int(35+vertBound));
-    if (downPixel!=-16777216)
+    if (downPixel!=COLOR_BLACK)
     {
       this.ypos=this.ypos+movementSpeed;
     }
@@ -50,7 +50,7 @@ class Tank
   {
     adjustAngle();
     color rightPixel = get(xpos+int(40+hortBound), ypos);
-    if (rightPixel!=-16777216)
+    if (rightPixel!=COLOR_BLACK)
     {
       this.xpos=this.xpos+movementSpeed;
     }
@@ -59,7 +59,7 @@ class Tank
   {
     adjustAngle();
     color leftPixel = get(xpos-int(40+hortBound), ypos);
-    if (leftPixel!=-16777216)
+    if (leftPixel!=COLOR_BLACK)
     {
       this.xpos=this.xpos-movementSpeed;
     }

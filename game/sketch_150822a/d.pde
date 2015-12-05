@@ -1,4 +1,4 @@
-class uniLaser
+/*class uniLaser
 {
   float unilaserxpos;
   float unilaserypos;
@@ -60,6 +60,6 @@ int distX = xLoc -player1.xpos;
       popMatrix();
     
   }
-}
+}*/
 
 

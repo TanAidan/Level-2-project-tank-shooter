@@ -1,18 +1,22 @@
-class uniLaser
+class UniLaser
 {
-  float unilaserxpos;
-  float unilaserypos;
+  int unilaserxpos;
+  int unilaserypos;
   float uniangle;
   PImage uniSprite;
   float unilaserSpeed;
+  int targetY;
+  int targetX;
 
-  public uniLaser(float unilaserxpos, float  unilaserypos, PImage uniSprite)
+  public UniLaser(int unilaserxpos, int  unilaserypos, int targetX, int targetY)
   {
     this.unilaserxpos=unilaserxpos;
     this.unilaserypos=unilaserypos;
 
-    this.uniSprite = uniSprite;
-    this.unilaserSpeed = 100;
+    this.uniSprite = loadImage("rainbow.png");
+    this.unilaserSpeed = 150;
+    this.targetX=targetX;
+    this.targetY=targetY;
   }
 
 
@@ -23,20 +27,15 @@ class uniLaser
     unilaserxpos += unilaserSpeed * cos(radians(uniangle-90));
     // unilaserypos -= unilaserSpeed * sin(radians(uniangle-90));
 
-    color downPixel = get(int(unilaserxpos), int(unilaserypos));
-    if (downPixel==-16777216)
-    {
-      print("stop"); 
-      unilaserxpos=unilaserypos+100000;
-    }
 
     bulletRotate();
+    
   } 
   public void bulletRotate() {
-    int xLoc=923;
-    int yLoc=607;
-    int distX = xLoc -player1.xpos;
-    int distY = yLoc - player1.ypos;
+    int xLoc=925;
+    int yLoc=625;
+    int distX = xLoc -targetX;
+    int distY = yLoc - targetY;
 
     //pushes current xy plain
     pushMatrix();
@@ -49,7 +48,8 @@ class uniLaser
       uniangle += PI;
     }
     uniangle += PI;                  
-    //rotates the xyplain to point gun towards the mouse
+    //rotates the xyplain to point gun towards the mouse'
+
     rotate(uniangle);
 
     translate(-xLoc, -yLoc);
