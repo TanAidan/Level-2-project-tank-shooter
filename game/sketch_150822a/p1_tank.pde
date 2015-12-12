@@ -1,8 +1,8 @@
 
 class Tank
 {
-  float rotationSpeed=2.5;
-  int movementSpeed=3;
+  float rotationSpeed=3;
+  int movementSpeed=4;
   float angle;
   int xpos;
   int ypos;
@@ -33,8 +33,6 @@ class Tank
     {
       this.ypos=this.ypos-movementSpeed;
     }
-    fill(255, 0, 0);
-    ellipse(xpos, ypos-int(35+vertBound), 10, 10);
   }
   public void moveDown()
   {

@@ -30,10 +30,15 @@ void draw()
 {
 
   background(map);
+  
+  fill(255, 0, 0);
+  ellipse(player1.xpos, player1.ypos, 10, 10);
+  textSize(16);
+  text("P:" + player1.xpos + ", " + player1.ypos, 5, 15);
+  
   if (millis() - m >= 1000) {
     m += 2000;
-
-
+    
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
@@ -70,21 +75,12 @@ void draw()
 
   unicorn1.unimissle();
 
-  for (int i = uniArray.size () - 1; i >= 0; i--)
+  for (UniLaser ms : uniArray)
   {
-
-
-    UniLaser ms=uniArray.get(i);
     ms.update();
-    loadPixels();
-    color downPixel= pixels[ms.unilaserxpos+(ms.unilaserypos*1025)];
-    println(downPixel);
-    if (downPixel==COLOR_BLACK)
-    {
-      uniArray.remove(i);
-    }
   }
 }
+
 
 
 void keyPressed() {
