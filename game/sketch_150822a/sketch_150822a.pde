@@ -27,6 +27,7 @@ void setup()
   background(map);
 }
 void draw()
+
 {
 
   background(map);
