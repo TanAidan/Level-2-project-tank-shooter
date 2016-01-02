@@ -2,17 +2,12 @@
 class Tank
 {
   float rotationSpeed=3;
-  int movementSpeed=4;
+  int movementSpeed=10;
   float angle;
   int xpos;
   int ypos;
   float vertBound=0;
-
   float hortBound=0;
-
-
-
-
   PImage sprite;
   public Tank(int xpos, int ypos, float angle, PImage sprite)
   {
@@ -21,14 +16,10 @@ class Tank
     this.angle=angle;
     this.sprite = sprite;
   }
-
   public void moveUp()
   { 
     adjustAngle();
     color topPixel = get(xpos, ypos-int(36+vertBound));
-
-
-
     if (topPixel!=-16777216)
     {
       this.ypos=this.ypos-movementSpeed;
@@ -43,7 +34,6 @@ class Tank
       this.ypos=this.ypos+movementSpeed;
     }
   }
-
   public void moveRight()
   {
     adjustAngle();
@@ -84,41 +74,49 @@ class Tank
     {
       vertBound=angle/2.55;
       hortBound=angle/2.75;
-    } else if (angle>45&&angle<90)
+    } 
+    else if (angle>45&&angle<90)
     {
       vertBound=(angle-45)/2.55;
       hortBound=(angle-45)/2.75;
-    } else if (angle>90&&angle<135) {
+    }
+    else if (angle>90&&angle<135) 
+    {
       vertBound=(angle-90)/2.55;
       hortBound=(angle-90)/2.75;
-    } else if (angle>135&&angle<180) {
+    } 
+    else if (angle>135&&angle<180) 
+    {
       vertBound=(angle-135)/2.55;
       hortBound=(angle-135)/2.75;
-    } else if (angle>180&&angle<225) {
+    }
+    else if (angle>180&&angle<225)
+    {
       vertBound=(angle-180)/2.55;
       hortBound=(angle-180)/2.75;
-    } else if (angle>225&&angle<270) {
+    } 
+    else if (angle>225&&angle<270) 
+    {
       vertBound=(angle-255)/2.55;
       hortBound=(angle-255)/2.75;
-    } else if (angle>270&&angle<315) {
+    } 
+    else if (angle>270&&angle<315) 
+    {
       vertBound=(angle-270)/2.55;
       hortBound=(angle-270)/2.75;
-    } else if (angle>315&&angle<360) {
+    }
+    else if (angle>315&&angle<360)
+    {
       vertBound=(angle-315)/2.55;
       hortBound=(angle-315)/2.75;
     }
   }
   public void draw() {
     degrees = radians(player1.angle);
-
     pushMatrix();
     translate(player1.xpos, player1.ypos);
-
     rotate(degrees);
-
     image(player1.sprite, -42.5, -40.5);
-
-
     popMatrix();
   }
 }
