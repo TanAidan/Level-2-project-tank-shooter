@@ -13,26 +13,38 @@ PImage map;
 ArrayList<UniLaser> uniArray = new ArrayList<UniLaser>();
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
 int m =0;
-
+int rectY = 80;
 void setup()
 {
 
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
-  //UniLaser unibullet= new UniLaser(float unilaserxpos, float  unilaserypos,  PImage uniSprite);
   map=loadImage("background.png");  
   background(map);
 }
 void draw()
 {
   
-  
   background(map);
+  PImage img;
+  img=loadImage("imgres.jpg");
+  fill(255,0,0);
+  rect(920,537,85,18);
+  fill(0,0,255);
+  rect(923,539, rectY ,13);
   fill(255, 0, 0);
   ellipse(player1.xpos, player1.ypos, 10, 10);
   textSize(16);
   text("P:" + player1.xpos + ", " + player1.ypos, 5, 15);
+ if(rectY<=0)
+ {
+   rectY=0;
+   image(img,890,585);
+   textSize(32);
+text("REVENGE", 500, 360); 
+fill(0, 102, 153);
+ }
   if (millis() - m >= 1000) {
     m += 2000;
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
@@ -64,10 +76,19 @@ void draw()
   }
   for (Laser ls : laserArray)
   {
-    ls.update();
+      ls.update();
+   if(ls.laserxpos>=924 && ls.laserypos>=510 && ls.laserypos<=705&&ls.laserxpos<=926)
+    {
+      println("hi");
+      rectY=rectY-2;
+      
+    }
+   
   }
   player1.draw();
+  if(rectY>0){
   unicorn1.unimissle();
+  }
   for (UniLaser ms : uniArray)
   {
     color downPixel = get(int(ms.unilaserxpos-25), int(ms.unilaserypos-5));
@@ -75,16 +96,19 @@ void draw()
     {
     ms.update();
     }
-        if (ms.unilaserypos>=int(player1.ypos) && ms.unilaserypos <= int(player1.ypos + 79) && ms.unilaserxpos>=int(player1.xpos) && ms.unilaserxpos <= int(player1.xpos+76))
+        if (ms.unilaserypos>=player1.ypos-39.5 && ms.unilaserypos <= player1.ypos +39.5 && ms.unilaserxpos>=player1.xpos-38 && ms.unilaserxpos <= player1.xpos+38)
     {
       player1.xpos=30;
       player1.ypos=419;
       dead=true;
     }
+    
     if(dead){
       background(200,0,0);
       restart.align(CENTER, CENTER);
       restart.setVisible(true);
+       
+       rectY=80;
     }
   }
 }

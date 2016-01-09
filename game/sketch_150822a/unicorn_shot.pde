@@ -18,8 +18,8 @@ class UniLaser
     this.targetX = targetX;
     this.targetY = targetY;
 
-    this.xSpeed = -20;
-    this.ySpeed = -20 * (float)(targetY - 600) / (float)(targetX - 900);
+    this.xSpeed = -14;
+    this.ySpeed = -14 * (float)(targetY - 600) / (float)(targetX - 900);
     //0.1 is too cahnge the angle of the  uni shot
     this.angle = atan((targetY-unilaserypos + 0.1 ) / (targetX-unilaserxpos+0.1));
   }
