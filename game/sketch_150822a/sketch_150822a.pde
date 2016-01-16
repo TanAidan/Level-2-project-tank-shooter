@@ -1,3 +1,4 @@
+  PImage key2;
  sketch_150822a sketch =  this ;
 Button restart=new Button(30,513,384,"RESTART");
 int COLOR_BLACK = -16777216;
@@ -23,12 +24,17 @@ void setup()
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
   map=loadImage("background.png");
-   map2=loadImage("background2.png");
+  map2=loadImage("background2.png");
+
+  key2 = loadImage("key.png");
+  
   background(map);
 }
 void draw()
 {
-  map2=loadImage("background2.png");
+  
+ println(mouseX);
+ println(mouseY);
   background(map);
   PImage img;
   img=loadImage("imgres.jpg");
@@ -42,12 +48,14 @@ void draw()
   text("P:" + player1.xpos + ", " + player1.ypos, 5, 15);
  if(rectY<=0)
  {
+ 
+   background(map2);
    rectY=0;
    image(img,890,585);
    textSize(32);
 text("REVENGE", 500, 360); 
 fill(0, 102, 153);
- background(map2);
+  image(key2,390,650);
  }
   if (millis() - m >= 1000) {
     m += 2000;
@@ -87,7 +95,7 @@ fill(0, 102, 153);
    if(ls.laserxpos>=924 && ls.laserypos>=510 && ls.laserypos<=705&&ls.laserxpos<=926)
     {
       println("hi");
-      rectY=rectY-1;
+      rectY=rectY-10;
       
     }
    
