@@ -10,9 +10,11 @@ int ypos2=-3;
 Tank player1;
 unicorn unicorn1;
 PImage map;
+PImage map2;
 ArrayList<UniLaser> uniArray = new ArrayList<UniLaser>();
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
 int m =0;
+int s=0;
 int rectY = 80;
 void setup()
 {
@@ -20,12 +22,13 @@ void setup()
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
-  map=loadImage("background.png");  
+  map=loadImage("background.png");
+   map2=loadImage("background2.png");
   background(map);
 }
 void draw()
 {
-  
+  map2=loadImage("background2.png");
   background(map);
   PImage img;
   img=loadImage("imgres.jpg");
@@ -44,6 +47,7 @@ void draw()
    textSize(32);
 text("REVENGE", 500, 360); 
 fill(0, 102, 153);
+ background(map2);
  }
   if (millis() - m >= 1000) {
     m += 2000;
@@ -76,11 +80,14 @@ fill(0, 102, 153);
   }
   for (Laser ls : laserArray)
   {
-      ls.update();
+    
+   ls.update();
+  
+      
    if(ls.laserxpos>=924 && ls.laserypos>=510 && ls.laserypos<=705&&ls.laserxpos<=926)
     {
       println("hi");
-      rectY=rectY-2;
+      rectY=rectY-1;
       
     }
    
