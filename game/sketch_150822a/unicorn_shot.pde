@@ -27,8 +27,7 @@ class UniLaser
     //println(ySpeed);
     fill(255, 0, 0);
     ellipse(player1.xpos, player1.ypos, 10, 10);
-    textSize(16);
-    text("S:" + unilaserxpos + ", " +unilaserypos, 35, 50);
+   
     pushMatrix();
     translate(unilaserxpos, unilaserypos);
     //rotates the xyplain to point gun towards the mouse
