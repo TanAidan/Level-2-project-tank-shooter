@@ -47,6 +47,8 @@ class Button {
           if (preventNoise == 0) {
            sketch.resetGame();
            background(map);
+           rectY=80;
+           rectZ=85;
             preventNoise = -8;
           } else if (preventNoise < 0) preventNoise++;
     }

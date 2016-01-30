@@ -1,6 +1,7 @@
+import javax.swing.*;
 PImage key2;
 sketch_150822a sketch =  this ;
-Button restart=new Button(30, 513, 384, "RESTART");
+Button restart=new Button(300, 513, 384, "RESTART");
 int COLOR_BLACK = -16777216;
 boolean canShoot=true;
 float degrees;
@@ -18,10 +19,12 @@ int m =0;
 gates gate = new gates();
 int s=0;
 float rectY = 80;
+float rectZ=85;
 int rectX = 41;
 void setup()
 {
-
+JOptionPane.showMessageDialog(null,"OK YOUR JOB IS TO KILL THE UNICORN AND ESCAPE THROUGH THE RED GATES. \n BUT BEWARE THE UNICORN HAS A SURPRISE OR TWO!!!");
+JOptionPane.showMessageDialog(null,"W-UP A-LEFT S-DOWN D-RIGHT SPACE-SHOOT RIGHT ARROW/LEFTARROW TO ROTATE");
   player1=new Tank(30, 419, 90, loadImage("tank.png") );
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
@@ -41,21 +44,24 @@ void draw()
   fill(255, 55, 55);
   gate.show();
   img=loadImage("imgres.jpg");
+  noStroke();
   fill(255, 0, 0);
-  rect(920, 537, 85, 18);
+  rect(920, 537, rectZ, 18);
   fill(0, 0, 255);
   rect(923, 539, rectY, 13);
+  stroke(0);
   fill(255, 0, 0);
   ellipse(player1.xpos, player1.ypos, 10, 10);
-
+ 
   if (rectY<=0)
   {
     rectY=0;
+    rectZ=0;
     fill(0, 102, 153);
     gate.open();
   }
-  if (millis() - m >= 1000) {
-    m += 2000;
+  if (millis() - m >= 2000) {
+    m += 1500;
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
@@ -92,10 +98,12 @@ void draw()
     if (ls.laserxpos>=924 && ls.laserypos>=510 && ls.laserypos<=705&&ls.laserxpos<=1000)
     {
       println("hi");
-      rectY=rectY-0.3;
+      rectY=rectY-0.1;
     }
   }
   player1.draw();
+ 
+  
   if (rectY>0) {
     unicorn1.unimissle();
   }
@@ -120,6 +128,13 @@ void draw()
 
       rectY=80;
     }
+  }
+  if(player1.xpos>=871 && player1.ypos<=0)
+  {
+   background(0,0,200);
+      restart.align(CENTER, CENTER);
+      restart.setVisible(true);
+   
   }
 }
 

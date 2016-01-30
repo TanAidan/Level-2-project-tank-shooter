@@ -11,7 +11,7 @@ class Laser
     this.laserypos=laserypos;
     this.angle=angle;
     this.laserSprite = laserSprite;
-    this.laserSpeed = 10;
+    this.laserSpeed = 13;
   }
   public void draw() {
     image(laserSprite, laserxpos, laserypos);
