@@ -9,7 +9,7 @@ class unicorn {
     this.sprite = sprite;
   }
   public  void unimissle() {
-   
+
     int xLoc=956;
     int yLoc=641;
     int distX = xLoc -player1.xpos;

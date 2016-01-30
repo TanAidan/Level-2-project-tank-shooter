@@ -1,5 +1,5 @@
 class Button {
- 
+
   private String in, out;
   private int xMult, tSize, oxLoc, oyLoc, xLoc, yLoc, preventNoise;
   private float bHeight, bWidth;
@@ -19,7 +19,7 @@ class Button {
   void setVisible(boolean tf) {
     if (tf) {
       //assigns the value of each char to a String array to add proper capitalization
-      for (int i = 0; i < in.length(); i++) {
+      for (int i = 0; i < in.length (); i++) {
         word[i] = String.valueOf(in.charAt(i));
         //sets the char after a space to capital
         if (i > 0)
@@ -27,7 +27,7 @@ class Button {
             word[i] = word[i].toUpperCase();
           }
       }
-      
+
       word[0] = word[0].toUpperCase(); //sets first letter in the input string to capital
       out = join(word, ""); //joins the string array back into one string
       bHeight = tSize + (tSize/4);
@@ -45,10 +45,10 @@ class Button {
       if (mousePressed)    
         if (mouseX < xLoc + xMult * out.length() && mouseX > xLoc && mouseY < yLoc +  tSize + (tSize/4) && mouseY > yLoc)
           if (preventNoise == 0) {
-           sketch.resetGame();
-           background(map);
-           rectY=80;
-           rectZ=85;
+            sketch.resetGame();
+            background(map);
+            rectY=80;
+            rectZ=85;
             preventNoise = -8;
           } else if (preventNoise < 0) preventNoise++;
     }
@@ -71,6 +71,6 @@ class Button {
       yLoc = int(oyLoc - bHeight/2);
     if (y == BOTTOM)
       yLoc = int(oyLoc - bHeight);
-  } 
+  }
 }
 
