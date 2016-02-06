@@ -1,4 +1,4 @@
-Timport javax.swing.*;
+import javax.swing.*;
 PImage key2;
 sketch_150822a sketch =  this ;
 Button restart=new Button(300, 513, 384, "RESTART");
@@ -23,9 +23,9 @@ float rectZ=85;
 int rectX = 41;
 void setup()
 {
-  JOptionPane.showMessageDialog(null, "OK YOUR JOB IS TO KILL THE UNICORN AND ESCAPE THROUGH THE RED GATES. \n BUT BEWARE THE UNICORN HAS A SURPRISE OR TWO!!!");
-  JOptionPane.showMessageDialog(null, "W-UP A-LEFT S-DOWN D-RIGHT SPACE-SHOOT RIGHT ARROW/LEFTARROW TO ROTATE");
-  player1=new Tank(30, 419, 90, loadImage("tank.png") );
+  JOptionPane.showMessageDialog(null, "Kill the unicorn and you will unlock the gates to freedom. !!!");
+  JOptionPane.showMessageDialog(null, "W-A-S-D to move and space to shoot");
+  player1=new Tank(30, 300, 90, loadImage("tank.png") );
   size(1025, 769);
   unicorn1=new unicorn(920, 585, loadImage("images.png"));
   map=loadImage("backgroundkkk.png");
@@ -41,7 +41,7 @@ void draw()
   println(mouseY);
   background(map);
   PImage img;
-  fill(255, 55, 55);
+  fill(0);
   gate.show();
   img=loadImage("imgres.jpg");
   noStroke();
@@ -52,6 +52,8 @@ void draw()
   stroke(0);
   fill(255, 0, 0);
   ellipse(player1.xpos, player1.ypos, 10, 10);
+  fill(0);
+  rect(0,200,5,200);
 
   if (rectY<=0)
   {
@@ -61,7 +63,7 @@ void draw()
     gate.open();
   }
   if (millis() - m >= 2000) {
-    m += 1500;
+    m += 2000;
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
@@ -109,10 +111,12 @@ void draw()
   }
   for (UniLaser ms : uniArray)
   {
+    ms.update();
     color downPixel = get(int(ms.unilaserxpos-25), int(ms.unilaserypos-5));
-    if (downPixel!=-16777216)
+    if (downPixel==-16777216)
     {
-      ms.update();
+      ms.unilaserxpos+=1000;
+      ms.unilaserypos+=1000;
     }
     if (ms.unilaserypos>=player1.ypos-39.5 && ms.unilaserypos <= player1.ypos +39.5 && ms.unilaserxpos>=player1.xpos-38 && ms.unilaserxpos <= player1.xpos+38)
     {
@@ -145,7 +149,7 @@ void resetGame() {
   background(map);
   player1.draw();
   player1.xpos= 30;
-  player1.ypos=419;
+  player1.ypos=300;
 }
 void keyPressed() {
   if (key == 'w') {
