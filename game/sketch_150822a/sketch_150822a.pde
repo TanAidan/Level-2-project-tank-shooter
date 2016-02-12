@@ -1,7 +1,7 @@
 import javax.swing.*;
 PImage key2;
 sketch_150822a sketch =  this ;
-Button restart=new Button(300, 513, 384, "RESTART");
+Button restart=new Button(300, 513, 384, "Restart");
 int COLOR_BLACK = -16777216;
 boolean canShoot=true;
 float degrees;
@@ -118,7 +118,7 @@ void draw()
       ms.unilaserxpos+=1000;
       ms.unilaserypos+=1000;
     }
-    if (ms.unilaserypos>=player1.ypos-39.5 && ms.unilaserypos <= player1.ypos +39.5 && ms.unilaserxpos>=player1.xpos-38 && ms.unilaserxpos <= player1.xpos+38)
+    if (ms.unilaserypos>=player1.ypos-39.5 && ms.unilaserypos <= player1.ypos +39.5 && ms.unilaserxpos>=player1.xpos-38 && ms.unilaserxpos <= player1.xpos+34)
     {
       player1.xpos=30;
       player1.ypos=419;
@@ -126,11 +126,17 @@ void draw()
     }
 
     if (dead) {
+      
       background(200, 0, 0);
+     
+
       restart.align(CENTER, CENTER);
       restart.setVisible(true);
 
       rectY=80;
+       textSize(32);
+      fill(0);
+text("YOU ARE DEAD",500, 100); 
     }
   }
   if (player1.xpos>=871 && player1.ypos<=0)
