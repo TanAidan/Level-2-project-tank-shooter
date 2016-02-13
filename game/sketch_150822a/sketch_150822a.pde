@@ -16,6 +16,7 @@ PImage map2;
 ArrayList<UniLaser> uniArray = new ArrayList<UniLaser>();
 ArrayList<Laser> laserArray = new ArrayList<Laser>();
 int m =0;
+int v=1500;
 gates gate = new gates();
 int s=0;
 float rectY = 80;
@@ -64,8 +65,9 @@ void draw()
     fill(0, 102, 153);
     gate.open();
   }
-  if (millis() - m >= 5000) {
-    m += 1500;
+  if (millis() - m >= 1500) {
+    m += v;
+    v-=10;
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
@@ -161,6 +163,7 @@ void resetGame() {
   player1.draw();
   player1.xpos= 30;
   player1.ypos=300;
+  v=1500;
 }
 void keyPressed() {
   if (key == 'w') {
