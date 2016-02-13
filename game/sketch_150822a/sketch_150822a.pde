@@ -19,11 +19,11 @@ int m =0;
 gates gate = new gates();
 int s=0;
 float rectY = 80;
-float rectZ=85;
+float rectZ=85; 
 int rectX = 41;
 void setup()
 {
-  JOptionPane.showMessageDialog(null, "Kill the unicorn and you will unlock the gates to freedom. !!!");
+  JOptionPane.showMessageDialog(null, "Kill the unicorn and you will unlock the gates to freedom... But beware the unicorn may have a surprise or two !!!");
   JOptionPane.showMessageDialog(null, "W-A-S-D to move and space to shoot");
   player1=new Tank(30, 300, 90, loadImage("tank.png") );
   size(1025, 769);
@@ -54,6 +54,8 @@ void draw()
   ellipse(player1.xpos, player1.ypos, 10, 10);
   fill(0);
   rect(0,200,5,200);
+  fill(0);
+  rect(0,765,1079,5);
 
   if (rectY<=0)
   {
@@ -62,8 +64,8 @@ void draw()
     fill(0, 102, 153);
     gate.open();
   }
-  if (millis() - m >= 2000) {
-    m += 2000;
+  if (millis() - m >= 5000) {
+    m += 1500;
     uniArray.add(new UniLaser(923, 607, player1.xpos, player1.ypos));
   }
   if (keyPressed== true) {
@@ -139,11 +141,14 @@ void draw()
 text("YOU ARE DEAD",500, 100); 
     }
   }
-  if (player1.xpos>=871 && player1.ypos<=0)
+  if (player1.xpos>=871 && player1.ypos<70)
   {
     background(0, 0, 200);
     restart.align(CENTER, CENTER);
     restart.setVisible(true);
+    textSize(32);
+      fill(255,255,255);
+text("YOU WON CONGRATS",500, 100); 
   }
 }
 
@@ -187,4 +192,3 @@ void keyReleased() {
     keys[4]=false;
   }
 }
-
